@@ -1,25 +1,29 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:visible/src/data/models/handbook_model.dart';
+import 'package:visible/src/screens/tabbar_widget_list.dart';
 
 class TabBarOne extends StatelessWidget {
-  final String? type;
+  final ListHandbook data;
 
   const TabBarOne({
     Key? key,
-    this.type,
+    required this.data,
   }) : super(key: key);
-
-  // final List<Tab> _allTabs = [
-  //   const Tab(text: 'EYES'),
-  //   const Tab(text: 'MSHS'),
-  // ];
 
   @override
   Widget build(BuildContext context) {
+    List<Data> dataHandbook = [];
     String textTab = '';
+    //String type = data.type;
+
+    String type = "E";
+
     if (type == "E") {
       textTab = "EYES Parent and Student Hanbook";
+      dataHandbook = data.dataEyes;
     } else if (type == "M") {
+      dataHandbook = data.dataMshs;
       textTab = "MSHS Parent and Student Hanbook";
     }
 
@@ -75,24 +79,19 @@ class TabBarOne extends StatelessWidget {
               ),
             ),
           ),
-          body: TabBarView(
-            children: [
-              ListView.separated(
-                padding: const EdgeInsets.all(15),
-                separatorBuilder: (BuildContext context, int index) =>
-                    const Divider(),
-                itemCount: 20,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: const Icon(Icons.file_download),
-                    onTap: () {},
-                    title: Text("Chat List $index"),
-                    subtitle: const Text("Tab bar"),
-                  );
-                },
-              )
-            ],
-          ),
+          body: dataHandbook.isEmpty
+              ? const TabBarView(
+                  children: [
+                    Text(
+                      "Empty, No Data.",
+                    )
+                  ],
+                )
+              : TabBarView(
+                  children: [
+                    ListHandbookWidget(dataHandbookEYES: dataHandbook),
+                  ],
+                ),
         ),
       ),
     );

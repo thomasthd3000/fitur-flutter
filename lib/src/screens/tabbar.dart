@@ -2,8 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
-import 'package:visible/src/data/models/info_model.dart';
+import 'package:visible/src/data/models/handbook_model.dart';
 
 import 'package:visible/src/screens/tabbar_one.dart';
 import 'package:visible/src/screens/tabbar_two.dart';
@@ -13,27 +12,36 @@ import 'package:http/http.dart' as http;
 class HandbookParentView extends StatelessWidget {
   const HandbookParentView({Key? key}) : super(key: key);
 
-  Future<List<Posts>> getAllInfoFav() async {
-    List<Posts> allInfoList = [];
+  //final _currentUser = Get.put(HomeController());
 
+  Future<ListHandbook> getListHandbook() async {
+    ListHandbook emptyHandbook = ListHandbook(
+      dataEyes: [],
+      dataMshs: [],
+      type: '',
+    );
+
+    //String myType = await RememberUserPrefs.readAgreement();
+    String myType = "B";
+
+    String accessToken =
+        'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3d3dy5zd2Etamt0LmNvbSIsImlhdCI6MTcxNjk2NTY4NywiZXhwIjoxNzE2OTcyODg3LCJ1c2VybmFtZSI6IkVMTEVOSCJ9._Ks4aZP8ypJpnm_77su5g7qeYsdoRWlbGcYZFhL5Vo0';
     try {
       var res = await http.post(
-        Uri.parse(API.readFavorite),
+        Uri.parse(API.listAgreement),
+        headers: {
+          'Authorization': 'Bearer $accessToken',
+        },
         body: {
-          "user_id": "1",
-          "student": "50017440,50017441,50017456",
-          //"fcm_id": fcmToken
+          "type": myType,
         },
       );
 
       if (res.statusCode == 200) {
-        var responseBodyOfAllInfos = jsonDecode(res.body);
+        var responseBodyOfHandbooks = jsonDecode(res.body);
 
-        if (responseBodyOfAllInfos["success"] == true) {
-          for (var eachRecord
-              in (responseBodyOfAllInfos["infosData"] as List)) {
-            allInfoList.add(Posts.fromJson(eachRecord));
-          }
+        if (responseBodyOfHandbooks["success"] == true) {
+          return ListHandbook.fromJson(responseBodyOfHandbooks['result']);
         }
       } else {
         Fluttertoast.showToast(msg: "Please Try Again Later");
@@ -42,7 +50,7 @@ class HandbookParentView extends StatelessWidget {
       Fluttertoast.showToast(msg: "Please Try Again Later");
     }
 
-    return allInfoList;
+    return emptyHandbook;
   }
 
   @override
@@ -51,40 +59,62 @@ class HandbookParentView extends StatelessWidget {
 
     return Scaffold(
       body: FutureBuilder(
-        future: getAllInfoFav(),
-        builder: (context, AsyncSnapshot<List<Posts>> dataSnapShot) {
+        future: getListHandbook(),
+        builder: (context, AsyncSnapshot<ListHandbook> dataSnapShot) {
           if (dataSnapShot.connectionState == ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(),
             );
           }
           if (dataSnapShot.data == null) {
-            return const Center(
-              child: Text(
-                "Empty, No Data.",
+            return Scaffold(
+              appBar: AppBar(
+                leading: const BackButton(
+                  color: Colors.white,
+                ),
+                backgroundColor: Colors.blue[400],
+                title: const Text(
+                  "Handbooks Parent",
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              body: const Center(
+                child: Text(
+                  "Empty, No Data.",
+                ),
               ),
             );
           }
-          if (dataSnapShot.data!.isNotEmpty) {
+          if (dataSnapShot.data!.dataEyes.isNotEmpty ||
+              dataSnapShot.data!.dataMshs.isNotEmpty) {
             return type == "E" || type == "M"
-                ? TabBarOne(type: type)
-                : TabBarTwo(type: type);
+                ? TabBarOne(data: dataSnapShot.data!)
+                : TabBarTwo(data: dataSnapShot.data!);
           } else {
-            return LayoutBuilder(
-              builder: (context, constraints) {
-                return SingleChildScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  child: SizedBox(
-                    height: constraints.maxHeight,
-                    child: const Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [Text("Empty, No Data.")],
-                      ),
-                    ),
+            return Scaffold(
+              appBar: AppBar(
+                leading: const BackButton(
+                  color: Colors.white,
+                ),
+                backgroundColor: Colors.blue[400],
+                title: const Text(
+                  "Handbooks Parent",
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
-                );
-              },
+                ),
+              ),
+              body: const Center(
+                child: Text(
+                  "Empty, No Data.",
+                ),
+              ),
             );
           }
         },

@@ -1,21 +1,24 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:visible/src/data/models/handbook_model.dart';
+import 'package:visible/src/screens/tabbar_widget_list.dart';
 
 class TabBarTwo extends StatelessWidget {
-  final String? type;
+  final ListHandbook data;
 
   const TabBarTwo({
     Key? key,
-    this.type,
+    required this.data,
   }) : super(key: key);
-
-  // final List<Tab> _allTabs = [
-  //   const Tab(text: 'EYES'),
-  //   const Tab(text: 'MSHS'),
-  // ];
 
   @override
   Widget build(BuildContext context) {
+    List<Data> dataHandbookEYES = [];
+    List<Data> dataHandbookMSHS = [];
+
+    dataHandbookEYES = data.dataEyes;
+    dataHandbookMSHS = data.dataMshs;
+
     return MaterialApp(
       home: DefaultTabController(
         length: 2,
@@ -73,101 +76,8 @@ class TabBarTwo extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              ListView.separated(
-                //padding: const EdgeInsets.fromLTRB(0, 5, 5, 5),
-                separatorBuilder: (BuildContext context, int index) =>
-                    const Divider(),
-                itemCount: 20,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: const Icon(Icons.file_open_outlined),
-                    onTap: () {},
-                    title: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        "Chat List Chat List Chat List Chat List Chat List $index",
-                        style: const TextStyle(fontSize: 16),
-                      ),
-                    ),
-                    subtitle: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 130,
-                          height: 30,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.lightBlueAccent,
-                              ),
-                              onPressed: () {
-                                debugPrint("click button download");
-                              },
-                              child: const Text(
-                                'Download',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-              ListView.separated(
-                //padding: const EdgeInsets.fromLTRB(0, 5, 5, 5),
-                separatorBuilder: (BuildContext context, int index) =>
-                    const Divider(),
-                itemCount: 20,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: const Icon(Icons.file_open_outlined),
-                    onTap: () {},
-                    title: Padding(
-                      padding: const EdgeInsets.all(
-                          16.0), // Adds 16 pixels of padding on all sides
-                      child: Text(
-                        "Chat List $index",
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                    ),
-                    subtitle: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 130,
-                          height: 30,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.lightBlueAccent,
-                              ),
-                              onPressed: () {
-                                debugPrint("click button download");
-                              },
-                              child: const Text(
-                                'Download',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+              ListHandbookWidget(dataHandbookEYES: dataHandbookEYES),
+              ListHandbookWidget(dataHandbookEYES: dataHandbookMSHS),
             ],
           ),
         ),

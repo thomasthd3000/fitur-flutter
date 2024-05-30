@@ -2,6 +2,7 @@ import 'dart:io';
 
 //import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -18,6 +19,7 @@ class PermissionView extends StatefulWidget {
 class _PermissionViewState extends State<PermissionView> {
   final AskPermissions _askPermissions =
       AskPermissions(); // Create an instance of AskPermissions
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,19 +32,52 @@ class _PermissionViewState extends State<PermissionView> {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              ElevatedButton(
-                onPressed: () async {
-                  saveFile();
-                  // snackbar();
-                },
-                child: const Text("Download"),
+              SizedBox(
+                width: 170,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    setState(() {
+                      isLoading = true;
+                    });
+                    await saveFile();
+
+                    // print("sss");
+                    // // snackbar();
+                    // await Future.delayed(Duration(seconds: 3));
+                    setState(() {
+                      isLoading = false;
+                    });
+                  },
+                  child: isLoading
+                      ? const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+
+                          // ignore: prefer_const_literals_to_create_immutables
+                          children: [
+                            Text(
+                              'Download...',
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            SizedBox(
+                              width: 25,
+                              height: 25,
+                              child: CircularProgressIndicator(
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ],
+                        )
+                      : const Text('Download'),
+                ),
               )
             ],
           ),
         ));
   }
 
-  Future<String> getFilePath() async {
+  Future<String> getFilePath(String title) async {
     String supportPath = '';
 
     if (Platform.isAndroid) {
@@ -57,55 +92,71 @@ class _PermissionViewState extends State<PermissionView> {
       supportPath = docDir.path;
     }
 
-    var time = DateTime.now().microsecondsSinceEpoch;
-    String filePath = '$supportPath/image-$time.jpg';
+    //var time = DateTime.now().microsecondsSinceEpoch;
+    String filePath = '$supportPath/$title.pdf';
 
     //print(filePath);
     return filePath;
   }
 
-  void saveFile() async {
+  void notifSnackbar(String status, String message, bool button,
+      {String position = "top"}) {
+    Get.snackbar(
+      status,
+      "",
+      colorText: Colors.white,
+      backgroundColor: Colors.lightBlue,
+      icon: const Icon(
+        Icons.add_alert_sharp,
+        color: Colors.white,
+      ),
+      snackPosition:
+          position == "top" ? SnackPosition.TOP : SnackPosition.BOTTOM,
+      maxWidth: Get.width,
+      mainButton: button == true
+          ? TextButton(
+              child: const Text(
+                'Open App Settings',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                openAppSettings();
+              },
+            )
+          : null,
+      messageText: Text(
+        message,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 14,
+        ),
+      ),
+    );
+  }
+
+  Future<void> saveFile() async {
     String? statusPermission = await _askPermissions.requestPermission();
 
     if (statusPermission == "true") {
-      var file = File(await getFilePath());
       var res = await http.get(
         Uri.parse(
-            "https://fastly.picsum.photos/id/82/200/200.jpg?hmac=ATNAhTLN2dA0KmTzSE5D9XiPe3GMX8uwxpFlhU7U5OY"),
+            "https://drive.google.com/uc?export=download&id=1nfZOYOvwiq12KScrJ19K2NZDPtBDuxSN"),
       );
 
-      file.writeAsBytes(res.bodyBytes);
+      if (res.statusCode == 200) {
+        String? content = res.headers['content-type'];
+        //print(content);
+
+        // var file = File(await getFilePath("tes"));
+        // file.writeAsBytes(res.bodyBytes);
+        // notifSnackbar("Info", "Downloaded Successfully", false);
+      } else {
+        notifSnackbar("Info", "Downloaded Failed", false, position: "top");
+      }
     } else if (statusPermission == "denied") {
       await openAppSettings();
     } else {
-      Get.snackbar(
-        'Warning',
-        "",
-        colorText: Colors.white,
-        backgroundColor: Colors.lightBlue,
-        icon: const Icon(
-          Icons.add_alert_sharp,
-          color: Colors.white,
-        ),
-        snackPosition: SnackPosition.BOTTOM,
-        maxWidth: Get.width,
-        mainButton: TextButton(
-          child: const Text(
-            'Open App Settings',
-            style: TextStyle(color: Colors.white),
-          ),
-          onPressed: () {
-            openAppSettings();
-          },
-        ),
-        messageText: const Text(
-          "Permission denied",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 14,
-          ),
-        ),
-      );
+      notifSnackbar("Warning", "Permission Denied", true, position: "bottom");
     }
   }
 
@@ -149,7 +200,7 @@ class _PermissionViewState extends State<PermissionView> {
     var time = DateTime.now().microsecondsSinceEpoch;
     String filePath = '$supportPath/image-$time.jpg';
 
-    print(filePath);
+    //print(filePath);
     return filePath;
   }
 

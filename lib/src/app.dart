@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 //import 'package:visible/src/screens/dialog.dart';
 
 import 'package:get/get.dart';
+import 'package:visible/src/screens/permission.dart';
 //import 'package:visible/src/screens/permission.dart';
-import 'package:visible/src/screens/tabbar.dart';
+//import 'package:visible/src/screens/tabbar.dart';
 
 // import 'package:visible/src/screens/webview.dart';
 
@@ -14,7 +15,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       title: 'THD',
-      home: HandbookParentView(),
+      home: PermissionView(),
     );
     // return const MaterialApp(
     //   title: 'THD',

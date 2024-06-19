@@ -87,8 +87,7 @@ class _FoodOrderState extends State<FoodOrder> {
     myDaily = generateFlagIsExpanded();
   }
 
-  NumberFormat currencyFormat =
-      NumberFormat.currency(locale: 'id_ID', symbol: 'Rp. ', decimalDigits: 0);
+  NumberFormat currencyFormat = NumberFormat.currency(locale: 'id_ID', symbol: 'Rp. ', decimalDigits: 0);
 
   void countTotal(bool value, int price, String selectedPaymentMethod) {
     if (value) {
@@ -106,8 +105,7 @@ class _FoodOrderState extends State<FoodOrder> {
     }
   }
 
-  bool checkWeek(
-      int min, int max, DailyMenu myDaily, String category, int week) {
+  bool checkWeek(int min, int max, DailyMenu myDaily, String category, int week) {
     bool shouldBreak = false;
     for (int i = min; i < max && !shouldBreak; i++) {
       if (category == 'Daily Set') {
@@ -174,17 +172,16 @@ class _FoodOrderState extends State<FoodOrder> {
         for (int i = 0; i < dailyMenus.daily.length; i++) {
           isExpandedMap[category]![dailyMenus.daily[i].date] = false;
 
-          menuItemsByCategoryAndDate[category]![dailyMenus.daily[i].date] =
-              dailyMenus.daily[i].products
-                  .map(
-                    (e) => Product(
-                      itemId: e.itemId,
-                      itemPrice: e.itemPrice,
-                      itemName: e.itemName,
-                      itemImage: e.itemImage,
-                    ),
-                  )
-                  .toList();
+          menuItemsByCategoryAndDate[category]![dailyMenus.daily[i].date] = dailyMenus.daily[i].products
+              .map(
+                (e) => Product(
+                  itemId: e.itemId,
+                  itemPrice: e.itemPrice,
+                  itemName: e.itemName,
+                  itemImage: e.itemImage,
+                ),
+              )
+              .toList();
 
           for (var product in dailyMenus.daily[i].products) {
             checkedItems[category]![product.itemId] = false;
@@ -195,17 +192,16 @@ class _FoodOrderState extends State<FoodOrder> {
         for (int i = 0; i < dailyMenus.pasta.length; i++) {
           isExpandedMap[category]![dailyMenus.pasta[i].date] = false;
 
-          menuItemsByCategoryAndDate[category]![dailyMenus.pasta[i].date] =
-              dailyMenus.pasta[i].products
-                  .map(
-                    (e) => Product(
-                      itemId: e.itemId,
-                      itemPrice: e.itemPrice,
-                      itemName: e.itemName,
-                      itemImage: e.itemImage,
-                    ),
-                  )
-                  .toList();
+          menuItemsByCategoryAndDate[category]![dailyMenus.pasta[i].date] = dailyMenus.pasta[i].products
+              .map(
+                (e) => Product(
+                  itemId: e.itemId,
+                  itemPrice: e.itemPrice,
+                  itemName: e.itemName,
+                  itemImage: e.itemImage,
+                ),
+              )
+              .toList();
 
           for (var product in dailyMenus.pasta[i].products) {
             checkedItems[category]![product.itemId] = false;
@@ -217,17 +213,16 @@ class _FoodOrderState extends State<FoodOrder> {
         for (int i = 0; i < dailyMenus.breakfast.length; i++) {
           isExpandedMap[category]![dailyMenus.breakfast[i].date] = false;
 
-          menuItemsByCategoryAndDate[category]![dailyMenus.breakfast[i].date] =
-              dailyMenus.breakfast[i].products
-                  .map(
-                    (e) => Product(
-                      itemId: e.itemId,
-                      itemPrice: e.itemPrice,
-                      itemName: e.itemName,
-                      itemImage: e.itemImage,
-                    ),
-                  )
-                  .toList();
+          menuItemsByCategoryAndDate[category]![dailyMenus.breakfast[i].date] = dailyMenus.breakfast[i].products
+              .map(
+                (e) => Product(
+                  itemId: e.itemId,
+                  itemPrice: e.itemPrice,
+                  itemName: e.itemName,
+                  itemImage: e.itemImage,
+                ),
+              )
+              .toList();
 
           for (var product in dailyMenus.breakfast[i].products) {
             checkedItems[category]![product.itemId] = false;
@@ -361,8 +356,7 @@ class _FoodOrderState extends State<FoodOrder> {
                           ),
                         ),
                         child: DropdownButtonFormField<String>(
-                          decoration:
-                              const InputDecoration.collapsed(hintText: ''),
+                          decoration: const InputDecoration.collapsed(hintText: ''),
                           hint: const Text("Select the student"),
                           isExpanded: true,
                           iconSize: 40,
@@ -371,14 +365,11 @@ class _FoodOrderState extends State<FoodOrder> {
                           onChanged: (String? newValue) {
                             setState(() {
                               selectedOption = newValue;
-                              gradeCtrl.text = foodData.student.firstWhere(
-                                  (item) =>
-                                      item['STEXT'] == newValue)['GRADETXT']!;
+                              gradeCtrl.text = foodData.student.firstWhere((item) => item['STEXT'] == newValue)['GRADETXT']!;
                               isShowGrade = true;
                             });
                           },
-                          items: foodData.student.map<DropdownMenuItem<String>>(
-                              (Map<String, String> value) {
+                          items: foodData.student.map<DropdownMenuItem<String>>((Map<String, String> value) {
                             return DropdownMenuItem<String>(
                               value: value['STEXT'],
                               child: Text(value['STEXT']!),
@@ -404,20 +395,16 @@ class _FoodOrderState extends State<FoodOrder> {
                                   decoration: InputDecoration(
                                     contentPadding: const EdgeInsets.all(10),
                                     border: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.grey.shade400),
+                                      borderSide: BorderSide(color: Colors.grey.shade400),
                                     ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.grey.shade400),
+                                      borderSide: BorderSide(color: Colors.grey.shade400),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.grey.shade400),
+                                      borderSide: BorderSide(color: Colors.grey.shade400),
                                     ),
                                     disabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.grey.shade400),
+                                      borderSide: BorderSide(color: Colors.grey.shade400),
                                     ),
                                     fillColor: Colors.grey.shade200,
                                     filled: true,
@@ -525,15 +512,8 @@ class _FoodOrderState extends State<FoodOrder> {
                 //mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Total',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: Colors.grey.shade500,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16)),
-                  Text(currencyFormat.format(totalAll),
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 20)),
+                  Text('Total', textAlign: TextAlign.left, style: TextStyle(color: Colors.grey.shade500, fontWeight: FontWeight.bold, fontSize: 16)),
+                  Text(currencyFormat.format(totalAll), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
                 ],
               ),
             ),
@@ -575,13 +555,11 @@ class _FoodOrderState extends State<FoodOrder> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 20),
-        const Text('Payment',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        const Text('Payment', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         const Divider(
           color: Colors.black,
         ),
-        const Text(
-            'We accept bank transfer and QRIS for instant payment. Your order will be processed directly after the payment is received.'),
+        const Text('We accept bank transfer and QRIS for instant payment. Your order will be processed directly after the payment is received.'),
         const SizedBox(height: 10),
         const Text('Note:', style: TextStyle(fontWeight: FontWeight.bold)),
         const Text('There will be a fee per transaction'),
@@ -599,8 +577,7 @@ class _FoodOrderState extends State<FoodOrder> {
         activeColor: Colors.blue,
         title: Text(
           paymentMethod,
-          style:
-              const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         subtitle: Text(
           fee,
@@ -674,7 +651,7 @@ class _FoodOrderState extends State<FoodOrder> {
     List<Widget> dateButtons = [];
 
     for (int i = 0; i < 5; i++) {
-      dateButtons.add(_buildDateButton(category, myDaily.daily[i].date, data));
+      dateButtons.add(_buildDateButton(category, myDaily.daily[i].date, data, myDaily.daily[i].isHoliday, myDaily.daily[i].holiday));
     }
 
     return dateButtons;
@@ -684,13 +661,13 @@ class _FoodOrderState extends State<FoodOrder> {
     List<Widget> dateButtons = [];
 
     for (int i = 5; i < 10; i++) {
-      dateButtons.add(_buildDateButton(category, myDaily.daily[i].date, data));
+      dateButtons.add(_buildDateButton(category, myDaily.daily[i].date, data, myDaily.daily[i].isHoliday, myDaily.daily[i].holiday));
     }
 
     return dateButtons;
   }
 
-  Widget _buildDateButton(String category, String tanggal, DailyMenu data) {
+  Widget _buildDateButton(String category, String tanggal, DailyMenu data, bool isHoliday, String holiday) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5.0),
       child: Column(
@@ -706,8 +683,7 @@ class _FoodOrderState extends State<FoodOrder> {
             ),
             onPressed: () {
               setState(() {
-                isExpandedMap[category]![tanggal] =
-                    !isExpandedMap[category]![tanggal]!;
+                isExpandedMap[category]![tanggal] = !isExpandedMap[category]![tanggal]!;
               });
             },
             child: Row(
@@ -718,9 +694,7 @@ class _FoodOrderState extends State<FoodOrder> {
                   style: const TextStyle(fontSize: 18, color: Colors.white),
                 ),
                 Icon(
-                  isExpandedMap[category]![tanggal]!
-                      ? Icons.expand_less
-                      : Icons.expand_more,
+                  isExpandedMap[category]![tanggal]! ? Icons.expand_less : Icons.expand_more,
                   color: Colors.white,
                 ),
               ],
@@ -728,23 +702,33 @@ class _FoodOrderState extends State<FoodOrder> {
           ),
           if (isExpandedMap[category]![tanggal]!)
             Column(
-              children: menuItemsByCategoryAndDate[category]![tanggal]!
-                  .asMap()
-                  .map(
-                    (index, menuItem) => MapEntry(
-                      index,
-                      _buildMenuItem(
-                        menuItem,
-                        category,
-                        tanggal,
-                        index,
-                        menuItemsByCategoryAndDate[category]![tanggal]!,
-                        data,
-                      ),
-                    ),
-                  )
-                  .values
-                  .toList(),
+              children: isHoliday
+                  ? [
+                      Card(
+                        color: Colors.white,
+                        child: ListTile(
+                          title: Text(holiday),
+                          // subtitle: Text('\$${menuItem.itemPrice.toStringAsFixed(2)}'),
+                        ),
+                      )
+                    ]
+                  : menuItemsByCategoryAndDate[category]![tanggal]!
+                      .asMap()
+                      .map(
+                        (index, menuItem) => MapEntry(
+                          index,
+                          _buildMenuItem(
+                            menuItem,
+                            category,
+                            tanggal,
+                            index,
+                            menuItemsByCategoryAndDate[category]![tanggal]!,
+                            data,
+                          ),
+                        ),
+                      )
+                      .values
+                      .toList(),
               // menuItemsByCategoryAndDate[category]![tanggal]!
               //     .map((menuItem) => _buildMenuItem(menuItem, category))
               //     .toList(),
@@ -754,8 +738,7 @@ class _FoodOrderState extends State<FoodOrder> {
     );
   }
 
-  Widget _buildMenuItem(Product menuItem, String category, String tanggal,
-      int index, productByDate, DailyMenu data) {
+  Widget _buildMenuItem(Product menuItem, String category, String tanggal, int index, productByDate, DailyMenu data) {
     return Container(
       color: Colors.grey.shade200,
       child: Card(
@@ -812,8 +795,7 @@ class _FoodOrderState extends State<FoodOrder> {
                         ),
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.5,
-                          child:
-                              Text(currencyFormat.format(menuItem.itemPrice)),
+                          child: Text(currencyFormat.format(menuItem.itemPrice)),
                         ),
                       ],
                     ),
@@ -841,8 +823,7 @@ class _FoodOrderState extends State<FoodOrder> {
                       //check all items under daily set
                       for (int i = 1; i < productByDate.length; i++) {
                         Product product = productByDate[i];
-                        checkedItems[category]![product.itemId] =
-                            value ?? false;
+                        checkedItems[category]![product.itemId] = value ?? false;
                       }
                       // use price daily set
                       countTotal(
@@ -856,8 +837,7 @@ class _FoodOrderState extends State<FoodOrder> {
                       for (int i = 1; i < productByDate.length; i++) {
                         Product productLoop = productByDate[i];
 
-                        if (checkedItems[category]![productLoop.itemId] ==
-                            false) {
+                        if (checkedItems[category]![productLoop.itemId] == false) {
                           flagDaily = false;
                         }
                       }
@@ -882,8 +862,7 @@ class _FoodOrderState extends State<FoodOrder> {
 
                         for (int i = 1; i < productByDate.length; i++) {
                           Product productCheck = productByDate[i];
-                          if (checkedItems[category]![productCheck.itemId]! ==
-                              true) {
+                          if (checkedItems[category]![productCheck.itemId]! == true) {
                             totalAmount -= productCheck.itemPrice;
                           }
                         }
@@ -950,11 +929,9 @@ class _FoodOrderState extends State<FoodOrder> {
                 String tmpCat = 'Daily Set';
                 for (int i = 0; i < data.daily.length; i++) {
                   for (int x = 0; x < data.daily[i].products.length; x++) {
-                    checkedItems[tmpCat]![data.daily[i].products[x].itemId] =
-                        value!;
+                    checkedItems[tmpCat]![data.daily[i].products[x].itemId] = value!;
                     if (x == 0) {
-                      countTotal(value, data.daily[i].products[x].itemPrice,
-                          selectedPaymentMethod);
+                      countTotal(value, data.daily[i].products[x].itemPrice, selectedPaymentMethod);
                     }
                   }
                 }
@@ -998,12 +975,10 @@ class _FoodOrderState extends State<FoodOrder> {
                 String tmpCat = 'Daily Set';
                 for (int i = 0; i < 5; i++) {
                   for (int x = 0; x < data.daily[i].products.length; x++) {
-                    checkedItems[tmpCat]![data.daily[i].products[x].itemId] =
-                        value!;
+                    checkedItems[tmpCat]![data.daily[i].products[x].itemId] = value!;
 
                     if (x == 0) {
-                      countTotal(value, data.daily[i].products[x].itemPrice,
-                          selectedPaymentMethod);
+                      countTotal(value, data.daily[i].products[x].itemPrice, selectedPaymentMethod);
                     }
                   }
                 }
@@ -1047,12 +1022,10 @@ class _FoodOrderState extends State<FoodOrder> {
                 String tmpCat = 'Daily Set';
                 for (int i = 5; i < 10; i++) {
                   for (int x = 0; x < data.daily[i].products.length; x++) {
-                    checkedItems[tmpCat]![data.daily[i].products[x].itemId] =
-                        value!;
+                    checkedItems[tmpCat]![data.daily[i].products[x].itemId] = value!;
 
                     if (x == 0) {
-                      countTotal(value, data.daily[i].products[x].itemPrice,
-                          selectedPaymentMethod);
+                      countTotal(value, data.daily[i].products[x].itemPrice, selectedPaymentMethod);
                     }
                   }
                 }
@@ -1103,11 +1076,8 @@ class _FoodOrderState extends State<FoodOrder> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(text,
-                style: const TextStyle(color: Colors.white, fontSize: 18)),
-            Icon(
-                color: Colors.white,
-                menuExpandedMap[text]! ? Icons.expand_less : Icons.expand_more),
+            Text(text, style: const TextStyle(color: Colors.white, fontSize: 18)),
+            Icon(color: Colors.white, menuExpandedMap[text]! ? Icons.expand_less : Icons.expand_more),
           ],
         ),
       ),

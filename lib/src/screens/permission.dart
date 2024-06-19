@@ -144,7 +144,7 @@ class _PermissionViewState extends State<PermissionView> {
       );
 
       if (res.statusCode == 200) {
-        String? content = res.headers['content-type'];
+        //String? content = res.headers['content-type'];
         //print(content);
 
         // var file = File(await getFilePath("tes"));

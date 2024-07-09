@@ -1,29 +1,8 @@
 class FoodData {
   List<Map<String, String>> student = [
-    {
-      "OBJID": "50017440",
-      "IDNUMBER": "99035",
-      "SHORT": "1000001623",
-      "STEXT": "DP G11, Book Ellen",
-      "GRADEID": "50001075",
-      "GRADETXT": "Grade 11"
-    },
-    {
-      "OBJID": "50017441",
-      "IDNUMBER": "99036",
-      "SHORT": "1000001624",
-      "STEXT": "DP G12, Book Ellen",
-      "GRADEID": "50001076",
-      "GRADETXT": "Grade 12"
-    },
-    {
-      "OBJID": "50017456",
-      "IDNUMBER": "99037",
-      "SHORT": "1000001625",
-      "STEXT": "MYP G07, Book Ellen",
-      "GRADEID": "50001046",
-      "GRADETXT": "Grade 7"
-    }
+    {"OBJID": "50017440", "IDNUMBER": "99035", "SHORT": "1000001623", "STEXT": "DP G11, Book Ellen", "GRADEID": "50001075", "GRADETXT": "Grade 11"},
+    {"OBJID": "50017441", "IDNUMBER": "99036", "SHORT": "1000001624", "STEXT": "DP G12, Book Ellen", "GRADEID": "50001076", "GRADETXT": "Grade 12"},
+    {"OBJID": "50017456", "IDNUMBER": "99037", "SHORT": "1000001625", "STEXT": "MYP G07, Book Ellen", "GRADEID": "50001046", "GRADETXT": "Grade 7"}
   ];
 
   final String food = '''{
@@ -292,9 +271,126 @@ class FoodData {
         "holiday": "",
         "products": [
           {
-            "item_id": "711",
-            "item_name": "Fucini",
-            "item_price": 45000,
+            "item_id": "400",
+            "item_name": "Spaghetti Bolognese",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "14 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "401",
+            "item_name": "Fettucine Carbonara",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "15 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "402",
+            "item_name": "Chicken spaghetti aglio olio",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "16 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "403",
+            "item_name": "Fettucine chicken marinara",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "17 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "404",
+            "item_name": "Spaghetti Bolognese and meetball",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "20 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "405",
+            "item_name": "Spaghetti Bolognese",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "21 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "406",
+            "item_name": "Fettucine Carbonara",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+       {
+        "date": "22 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "407",
+            "item_name": "Lasagna",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "23 May 2024",
+        "is_holiday": true,
+        "holiday": "Public Holiday (Waisak)",
+        "products": [
+          {
+            "item_id": "408",
+            "item_name": "Lasagna",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "24 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "409",
+            "item_name": "Fettuccine Marinara",
+            "item_price": 30000,
             "item_image": ""
           }
         ]
@@ -307,9 +403,132 @@ class FoodData {
         "holiday": "",
         "products": [
           {
-            "item_id": "712",
-            "item_name": "Fried rice (Nasi Goreng) ",
+            "item_id": "755",
+            "item_name": "Fried rice (Nasi Goreng)",
+            "item_price": 30000,
+            "item_image": ""
+          },
+          {
+            "item_id": "756",
+            "item_name": "Salad",
             "item_price": 20000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "14 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "757",
+            "item_name": "Beef burger",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "15 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "758",
+            "item_name": "Shihlin fried chicken",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "16 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "759",
+            "item_name": "Pizza",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "17 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "760",
+            "item_name": "Siomay",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "20 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "761",
+            "item_name": "Batagor",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "21 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "762",
+            "item_name": "Hotdog",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+       {
+        "date": "22 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "763",
+            "item_name": "Chicken Ramen",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "23 May 2024",
+        "is_holiday": true,
+        "holiday": "Public Holiday (Waisak)",
+        "products": [
+          {
+            "item_id": "764",
+            "item_name": "Burrito",
+            "item_price": 30000,
+            "item_image": ""
+          }
+        ]
+      },
+      {
+        "date": "24 May 2024",
+        "is_holiday": false,
+        "holiday": "",
+        "products": [
+          {
+            "item_id": "765",
+            "item_name": "French fries and nugget",
+            "item_price": 30000,
             "item_image": ""
           }
         ]

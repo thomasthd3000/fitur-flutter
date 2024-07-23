@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:visible/src/data/models/handbook_model.dart';
+import '../data/models/handbook_model.dart';
 
-import 'package:visible/src/screens/tabbar_one.dart';
-import 'package:visible/src/screens/tabbar_two.dart';
-import 'package:visible/src/utils/api_connection.dart';
+import 'tabbar_one.dart';
+import 'tabbar_two.dart';
+import '../utils/api_connection.dart';
 import 'package:http/http.dart' as http;
 
 class HandbookParentView extends StatelessWidget {
@@ -89,11 +89,8 @@ class HandbookParentView extends StatelessWidget {
               ),
             );
           }
-          if (dataSnapShot.data!.dataEyes.isNotEmpty ||
-              dataSnapShot.data!.dataMshs.isNotEmpty) {
-            return type == "E" || type == "M"
-                ? TabBarOne(data: dataSnapShot.data!)
-                : TabBarTwo(data: dataSnapShot.data!);
+          if (dataSnapShot.data!.dataEyes.isNotEmpty || dataSnapShot.data!.dataMshs.isNotEmpty) {
+            return type == "E" || type == "M" ? TabBarOne(data: dataSnapShot.data!) : TabBarTwo(data: dataSnapShot.data!);
           } else {
             return Scaffold(
               appBar: AppBar(

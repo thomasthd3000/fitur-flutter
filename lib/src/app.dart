@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 //import 'package:visible/src/screens/dialog.dart';
 
 import 'package:get/get.dart';
-// import 'package:visible/src/screens/expansion_list.dart';
-
-// import 'package:visible/src/screens/debug.dart';
-import 'package:visible/src/screens/food_order.dart';
+import 'package:visible/src/screens/scroll.dart';
 // import 'package:visible/src/screens/food_order_summary.dart';
 // import 'package:visible/src/screens/permission.dart';
 // import 'package:visible/src/screens/tabbar.dart';
@@ -18,7 +15,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       title: 'THD',
-      home: FoodOrder(),
+      home: ScrollPage(),
     );
     // return const MaterialApp(
     //   title: 'THD',

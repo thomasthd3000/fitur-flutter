@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:visible/src/data/models/handbook_model.dart';
+import '../data/models/handbook_model.dart';
 
 class ListHandbookWidget extends StatelessWidget {
   const ListHandbookWidget({
@@ -17,9 +17,7 @@ class ListHandbookWidget extends StatelessWidget {
       itemCount: dataHandbookEYES.length,
       itemBuilder: (context, index) {
         return ListTile(
-          leading: dataHandbookEYES[index].downloadFlag == true
-              ? const Icon(Icons.file_download)
-              : const Icon(Icons.file_copy),
+          leading: dataHandbookEYES[index].downloadFlag == true ? const Icon(Icons.file_download) : const Icon(Icons.file_copy),
           onTap: () {},
           title: Padding(
             padding: const EdgeInsets.all(16.0),

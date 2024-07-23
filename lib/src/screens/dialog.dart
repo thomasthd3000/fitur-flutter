@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:visible/src/controllers/dialog_controller.dart';
+import '../controllers/dialog_controller.dart';
 
 class DialogView extends StatelessWidget {
   DialogView({super.key});

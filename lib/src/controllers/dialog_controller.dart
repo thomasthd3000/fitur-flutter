@@ -6,10 +6,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:visible/src/data/models/agreement_model.dart';
-
-import 'package:visible/src/utils/api_connection.dart';
 import 'package:http/http.dart' as http;
+import 'package:visible/src/data/models/agreement_model.dart';
+import 'package:visible/src/utils/api_connection.dart';
 
 class DialogController extends GetxController {
   RxBool isChecked = false.obs;
@@ -121,21 +120,17 @@ class DialogController extends GetxController {
                         //update();
                       },
                       side: MaterialStateBorderSide.resolveWith(
-                        (states) =>
-                            const BorderSide(width: 1.0, color: Colors.orange),
+                        (states) => const BorderSide(width: 1.0, color: Colors.orange),
                       ),
                     ),
                     const Text(
                       "By checking this box,",
-                      style: TextStyle(
-                          color: Colors.orange, fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
                 const SizedBox(height: 5),
-                Text(myMessage,
-                    textAlign: TextAlign.justify,
-                    style: const TextStyle(fontWeight: FontWeight.bold)),
+                Text(myMessage, textAlign: TextAlign.justify, style: const TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
           ),

@@ -119,18 +119,22 @@ class DialogController extends GetxController {
                         isChecked.value = value!;
                         //update();
                       },
-                      side: MaterialStateBorderSide.resolveWith(
-                        (states) => const BorderSide(width: 1.0, color: Colors.orange),
+                      side: WidgetStateBorderSide.resolveWith(
+                        (states) =>
+                            const BorderSide(width: 1.0, color: Colors.orange),
                       ),
                     ),
                     const Text(
                       "By checking this box,",
-                      style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          color: Colors.orange, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
                 const SizedBox(height: 5),
-                Text(myMessage, textAlign: TextAlign.justify, style: const TextStyle(fontWeight: FontWeight.bold)),
+                Text(myMessage,
+                    textAlign: TextAlign.justify,
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
           ),

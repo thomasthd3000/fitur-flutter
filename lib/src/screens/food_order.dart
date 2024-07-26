@@ -807,8 +807,8 @@ class _FoodOrderState extends State<FoodOrder> {
             child: Checkbox(
               checkColor: Colors.white,
               activeColor: Colors.white,
-              fillColor: MaterialStateProperty.resolveWith((states) {
-                if (!states.contains(MaterialState.selected)) {
+              fillColor: WidgetStateProperty.resolveWith((states) {
+                if (!states.contains(WidgetState.selected)) {
                   return Colors.white;
                 }
                 return Colors.blue;
@@ -1111,8 +1111,8 @@ class RoundedCheckboxWithText extends StatelessWidget {
           Checkbox(
             checkColor: Colors.white,
             activeColor: Colors.white,
-            fillColor: MaterialStateProperty.resolveWith((states) {
-              if (!states.contains(MaterialState.selected)) {
+            fillColor: WidgetStateProperty.resolveWith((states) {
+              if (!states.contains(WidgetState.selected)) {
                 return Colors.white;
               }
               return Colors.blue;

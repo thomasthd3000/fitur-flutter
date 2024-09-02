@@ -9,14 +9,21 @@ class AskPermissions {
       AndroidDeviceInfo build = await DeviceInfoPlugin().androidInfo;
 
       if (build.version.sdkInt >= 33) {
-        // var status = await Permission.manageExternalStorage.request();
-        // if (status.isGranted) {
-        return "true";
-        // } else if (status.isDenied) {
-        //   return "false";
+        // const permission = Permission.manageExternalStorage;
+
+        // if (await permission.isDenied) {
+        //   final result = await permission.request();
+        //   if (result.isGranted) {
+        //     return "true";
+        //   } else if (result.isDenied) {
+        //     return "false";
+        //   } else if (result.isPermanentlyDenied) {
+        //     return "denied";
+        //   }
         // } else {
-        //   return "denied";
+        //   return "true";
         // }
+        return "true";
       } else {
         const permission = Permission.storage;
 
@@ -34,7 +41,7 @@ class AskPermissions {
         }
       }
     } else if (Platform.isIOS) {
-      const permission = Permission.photos;
+      const permission = Permission.storage;
 
       if (await permission.isDenied) {
         final result = await permission.request();

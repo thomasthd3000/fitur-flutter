@@ -3,8 +3,9 @@ import 'package:flutter/services.dart';
 
 class VAScreen extends StatelessWidget {
   final String accountNumber = '89325400000020002';
-  final String accountName = 'Bank Mandiri a/n Jesayas';
+  final String accountName = 'Bank BCA';
   final String amount = 'Rp 100.000';
+  final String amountNum = '100000';
 
   const VAScreen({super.key});
 
@@ -86,14 +87,21 @@ class VAScreen extends StatelessWidget {
                     ],
                   ),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      padding: const EdgeInsets.all(8),
+                    ),
                     onPressed: () {
                       Clipboard.setData(ClipboardData(text: accountNumber));
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Nomor rekening disalin!')),
+                        const SnackBar(content: Text('Virtual Account Number copied!!')),
                       );
                     },
                     child: const Text(
-                      'Salin',
+                      'Copy',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -130,13 +138,20 @@ class VAScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Clipboard.setData(ClipboardData(text: amount));
+                      Clipboard.setData(ClipboardData(text: amountNum));
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Jumlah pembayaran disalin!')),
+                        const SnackBar(content: Text('Total Payment copied!')),
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      padding: const EdgeInsets.all(8),
+                    ),
                     child: const Text(
-                      'Salin',
+                      'Copy',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -168,6 +183,7 @@ class VAScreen extends StatelessWidget {
                         ],
                       ),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('3. '),
                           Expanded(
@@ -207,9 +223,70 @@ class VAScreen extends StatelessWidget {
               title: Text("Internet Banking BCA"),
               children: <Widget>[
                 ListTile(
-                  title: Text(
-                      "1. Login pada alamat Internet Banking BCA (https://klikbca.com)\n2. Pilih menu Pembayaran Tagihan > Pembayaran > BCA Virtual Account.\n3. Pada kolom kode bayar, masukkan 5 angka kode perusahaan untuk Tokopedia (80777) dan Nomor HP yang terdaftar di akun Tokopedia Anda (Contoh: 80777081808379295)\n4. Di halaman konfirmasi, pastikan detil pembayaran sudah sesuai seperti Nomor BCA Virtual Account, Nama Pelanggan dan Jumlah Pembayaran\n5. Masukkan password dan mToken\n6. Cetak/simpan struk pembayaran BCA Virtual Account sebagai bukti pembayaran"),
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('1. '),
+                          Expanded(child: Text('Login pada alamat Internet Banking BCA (https://klikbca.com)')),
+                        ],
+                      ),
+                      SizedBox(height: 4),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('2. '),
+                          Expanded(
+                            child: Text('Pilih menu Pembayaran Tagihan > Pembayaran > BCA Virtual Account.'),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 4),
+                      Row(
+                        children: [
+                          Text('3. '),
+                          Expanded(
+                            child: Text(
+                              'Pada kolom kode bayar, masukkan kode perusahaan dan Nomor Virtual Account.',
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 4),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('4. '),
+                          Expanded(
+                            child: Text(
+                                'Di halaman konfirmasi, pastikan detil pembayaran sudah sesuai seperti Nomor BCA Virtual Account, Nama Pelanggan dan Jumlah Pembayaran'),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 4),
+                      Row(
+                        children: [
+                          Text('5. '),
+                          Expanded(child: Text('Masukkan password dan mToken')),
+                        ],
+                      ),
+                      SizedBox(height: 4),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('6. '),
+                          Expanded(child: Text('Cetak/simpan struk pembayaran BCA Virtual Account sebagai bukti pembayaran')),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
+                // ListTile(
+                //   title: Text(
+                //       "1. Login pada alamat Internet Banking BCA (https://klikbca.com)\n2. Pilih menu Pembayaran Tagihan > Pembayaran > BCA Virtual Account.\n3. Pada kolom kode bayar, masukkan 5 angka kode perusahaan untuk Tokopedia (80777) dan Nomor HP yang terdaftar di akun Tokopedia Anda (Contoh: 80777081808379295)\n4. Di halaman konfirmasi, pastikan detil pembayaran sudah sesuai seperti Nomor BCA Virtual Account, Nama Pelanggan dan Jumlah Pembayaran\n5. Masukkan password dan mToken\n6. Cetak/simpan struk pembayaran BCA Virtual Account sebagai bukti pembayaran"),
+                // ),
               ],
             ),
           ],

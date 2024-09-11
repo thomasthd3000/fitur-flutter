@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 // import 'package:visible/src/screens/qr.dart';
-import 'package:visible/src/screens/va.dart';
+import 'package:visible/src/screens/version.dart';
+// import 'package:visible/src/screens/va.dart';
 //import 'package:visible/src/screens/scroll.dart';
 // import 'package:visible/src/screens/food_order_summary.dart';
 // import 'package:visible/src/screens/permission.dart';
@@ -18,7 +19,7 @@ class App extends StatelessWidget {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'THD',
-      home: VAScreen(),
+      home: Version(),
     );
     // return const MaterialApp(
     //   title: 'THD',

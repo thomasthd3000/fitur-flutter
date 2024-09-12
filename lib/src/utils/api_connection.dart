@@ -7,10 +7,10 @@ class API {
   //     "https://mobileapps.swa-jkt.com:8081/infobyteapi";
 
   // ANDROID SIMULATOR
-  //static const hostConnectLive = "http://192.168.248.87/infobyteapi";
+  static const hostConnectLive = "http://192.168.59.87/infobyteapi";
 
   // IOS SIMULATOR
-  static const hostConnectLive = "http://127.0.0.1/infobyteapi";
+  //static const hostConnectLive = "http://127.0.0.1/infobyteapi";
 
   static const getAllInfo = "$hostConnectLive/info/allinfo.php";
   static const searchInfo = "$hostConnectLive/info/search.php";
@@ -34,7 +34,4 @@ class API {
 
   //versions
   static const getVersions = "$hostConnectLive/versions/versions.php";
-
-  static const appANDROID = "https://play.google.com/store/apps/details?id=com.infobyte.infobyte";
-  static const appIOS = "https://apps.apple.com/id/app/visible/id1607353137";
 }

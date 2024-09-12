@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:visible/src/screens/version.dart';
 
 class VAScreen extends StatelessWidget {
   final String accountNumber = '89325400000020002';
@@ -159,6 +161,21 @@ class VAScreen extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.lightBlueAccent,
+              ),
+              onPressed: () {
+                Get.to(() => const Version());
+              },
+              child: const Text(
+                'Go To Version',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             const SizedBox(height: 24),

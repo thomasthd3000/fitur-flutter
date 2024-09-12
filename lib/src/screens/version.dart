@@ -2,7 +2,9 @@
 
 // import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:visible/src/screens/force_update.dart';
+import 'package:visible/src/screens/va.dart';
 
 class Version extends StatelessWidget {
   final String accountNumber = '89325400000020002';
@@ -28,12 +30,12 @@ class Version extends StatelessWidget {
         backgroundColor: Colors.blue,
         centerTitle: true,
       ),
-      body: const SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
+            const Center(
               child: Text(
                 'Make payment before',
                 style: TextStyle(
@@ -42,8 +44,8 @@ class Version extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 8),
-            Center(
+            const SizedBox(height: 8),
+            const Center(
               child: Text(
                 '20/08/2024 11:00 WIB',
                 style: TextStyle(
@@ -53,14 +55,30 @@ class Version extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 24),
-            Text(
+            const SizedBox(height: 24),
+            const Text(
               'Pay to Virtual Account Number',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
             ),
+            const SizedBox(height: 8),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.lightBlueAccent,
+              ),
+              onPressed: () {
+                Get.to(() => const VAScreen());
+              },
+              child: const Text(
+                'Go To VA',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
           ],
         ),
       ),

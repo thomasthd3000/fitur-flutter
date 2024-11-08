@@ -49,7 +49,7 @@ class ForceUpdateChecker {
       }
     } else {
       // Handle API error
-      print("Failed to fetch the version information");
+      //print("Failed to fetch the version information");
     }
   }
 

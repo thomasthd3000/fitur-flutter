@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 //import 'package:visible/src/screens/dialog.dart';
 
 import 'package:get/get.dart';
+// import 'package:visible/src/screens/checkbox.dart';
+import 'package:visible/src/screens/date_button.dart';
 // import 'package:visible/src/screens/qr.dart';
-import 'package:visible/src/screens/version.dart';
+// import 'package:visible/src/screens/version.dart';
 // import 'package:visible/src/screens/va.dart';
 //import 'package:visible/src/screens/scroll.dart';
 // import 'package:visible/src/screens/food_order_summary.dart';
@@ -19,7 +21,7 @@ class App extends StatelessWidget {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'THD',
-      home: Version(),
+      home: ButtonRowScreen(),
     );
     // return const MaterialApp(
     //   title: 'THD',

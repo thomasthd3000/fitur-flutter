@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:visible/src/screens/checkbox.dart';
-import 'src/app.dart';
+// import 'src/app.dart';
 // import 'package:permission_handler/permission_handler.dart';
 
 void main() async {
